@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Recommender</title>
+</head>
+<body>
+    <h1>Recipe Recommender</h1>
+
+    <!-- Form to input ingredients -->
+    <form method="POST">
+        <label for="ingredients">Enter ingredients (comma separated):</label><br>
+        <input type="text" id="ingredients" name="ingredients" required>
+        <button type="submit">Get Recipes</button>
+    </form>
+
+    <hr>
+
+    <!-- Display recipes -->
+    {% if recipes %}
+        <h2>Suggested Recipes</h2>
+        {% for recipe in recipes %}
+            <div style="margin-bottom:20px;">
+                <h3>{{ recipe[0] }}</h3> <!-- title -->
+                <p><strong>Ingredients:</strong><br>{{ recipe[1]|safe }}</p>
+                <p><strong>Steps:</strong><br>{{ recipe[2]|safe }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No recipes yet. Enter ingredients above to generate one.</p>
+    {% endif %}
+</body>
+</html>
+
